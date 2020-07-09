@@ -5,11 +5,12 @@ using UnityEngine;
 public class GeneratorScript : MonoBehaviour
 {
     public GameObject GeneratorUI;
-    public GameObject playerPoison, playerSpeed, playerSnare, enemyPoison, enemySpeed, enemySnare;
+    public GameObject playerPoison, playerSpeed, playerSnare, playerFloat, enemyPoison, enemySpeed, enemySnare, enemyFloat;
 
     public bool isOpen = false;
 
     public static bool hasInteracted = false;
+    public static bool resetStoneHUD = false;
 
     void Start()
     {
@@ -37,6 +38,48 @@ public class GeneratorScript : MonoBehaviour
         {
             CloseUI();
         }
+
+        if (StoneChargeScript.enemyChargePoison)
+        {
+            enemyPoison.SetActive(true);
+        }
+        else
+        {
+            enemyPoison.SetActive(false);
+        }
+
+        if (StoneChargeScript.enemyChargeSpeed)
+        {
+            enemySpeed.SetActive(true);
+        }
+        else
+        {
+            enemySpeed.SetActive(false);
+        }
+
+        if (StoneChargeScript.enemyChargeSnare)
+        {
+            enemySnare.SetActive(true);
+        }
+        else
+        {
+            enemySnare.SetActive(false);
+        }
+
+        if (StoneChargeScript.enemyChargeFloat)
+        {
+            enemyFloat.SetActive(true);
+        }
+        else
+        {
+            enemyFloat.SetActive(false);
+        }
+
+        if (resetStoneHUD)
+        {
+            ResetHUD();
+            resetStoneHUD = false;
+        }
     }
 
     void CloseUI()
@@ -53,6 +96,7 @@ public class GeneratorScript : MonoBehaviour
         playerPoison.SetActive(true);
         playerSpeed.SetActive(false);
         playerSnare.SetActive(false);
+        playerFloat.SetActive(false);
     }
 
     public void PlayerSpeed()
@@ -61,6 +105,7 @@ public class GeneratorScript : MonoBehaviour
         playerPoison.SetActive(false);
         playerSpeed.SetActive(true);
         playerSnare.SetActive(false);
+        playerFloat.SetActive(false);
     }
 
     public void PlayerSnare()
@@ -69,10 +114,27 @@ public class GeneratorScript : MonoBehaviour
         playerPoison.SetActive(false);
         playerSpeed.SetActive(false);
         playerSnare.SetActive(true);
+        playerFloat.SetActive(false);
     }
 
     public void PlayerFloat()
     {
+        PlayerMovement.selectedFloat = true;
+        playerPoison.SetActive(false);
+        playerSpeed.SetActive(false);
+        playerSnare.SetActive(false);
+        playerFloat.SetActive(true);
+    }
 
+    void ResetHUD()
+    {
+        PlayerMovement.selectedPoison = false;
+        PlayerMovement.selectedSpeed = false;
+        PlayerMovement.selectedSnare = false;
+        PlayerMovement.selectedFloat = false;
+        playerPoison.SetActive(false);
+        playerSpeed.SetActive(false);
+        playerSnare.SetActive(false);
+        playerFloat.SetActive(false);
     }
 }

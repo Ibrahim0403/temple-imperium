@@ -29,6 +29,12 @@ public class PlayerMovement : MonoBehaviour
     public static bool selectedSpeed = false;
     public static bool selectedSnare = false;
     public static bool selectedFloat = false;
+    public static bool selectedNothing = false;
+
+    public static bool increasePoisonCharge = false;
+    public static bool increaseSpeedCharge = false;
+    public static bool increaseSnareCharge = false;
+    public static bool increaseFloatCharge = false;
 
     GunScript primaryScript;
     GunScript secondaryScript;
@@ -49,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(speed);
+        //Debug.Log(speed);
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -78,16 +84,30 @@ public class PlayerMovement : MonoBehaviour
         {
             GivePoison();
             selectedPoison = false;
+            increasePoisonCharge = true;
         }
         if (selectedSpeed)
         {
             GiveSpeed();
             selectedSpeed = false;
+            increaseSpeedCharge = true;
         }
         if (selectedSnare)
         {
             GiveSnare();
             selectedSnare = false;
+            increaseSnareCharge = true;
+        }
+        if (selectedFloat)
+        {
+            GiveFloat();
+            selectedFloat = false;
+            increaseFloatCharge = true;
+        }
+        if (selectedNothing)
+        {
+            ResetAll();
+            selectedNothing = false;
         }
     }
 
@@ -100,21 +120,6 @@ public class PlayerMovement : MonoBehaviour
             prototypeScript.RefillAmmo();
 
             Destroy(other.gameObject);
-        }
-
-        if (other.gameObject.tag == "SpeedStone")
-        {
-            GiveSpeed();
-        }
-
-        if (other.gameObject.tag == "PoisonStone")
-        {
-            GivePoison();
-        }
-
-        if (other.gameObject.tag == "SnareStone")
-        {
-            GiveSnare();
         }
 
         if(other.gameObject.tag == "Generator")
@@ -138,6 +143,7 @@ public class PlayerMovement : MonoBehaviour
         prototypeScript.hasPoison = true;
         ResetSpeed();
         ResetSnare();
+        ResetFloat();
         //Debug.Log("Got Poison");
     }
 
@@ -151,6 +157,7 @@ public class PlayerMovement : MonoBehaviour
         }
         ResetPoison();
         ResetSnare();
+        ResetFloat();
         //Debug.Log("Got Speed");
     }
 
@@ -159,12 +166,21 @@ public class PlayerMovement : MonoBehaviour
         prototypeScript.hasSnare = true;
         ResetPoison();
         ResetSpeed();
+        ResetFloat();
         //Debug.Log("Got Snare");
+    }
+
+    void GiveFloat()
+    {
+        ResetPoison();
+        ResetSpeed();
+        ResetSnare();
     }
 
     void ResetPoison()
     {
         prototypeScript.hasPoison = false;
+        increasePoisonCharge = false;
     }
 
     void ResetSpeed()
@@ -175,6 +191,7 @@ public class PlayerMovement : MonoBehaviour
             speedChanged = false;
             EnemyController.speedChanged = false;
             EnemyController.hasOtherStarStone = true;
+            increaseSpeedCharge = false;
             //Debug.Log("Got Speed");
         }
     }
@@ -182,6 +199,21 @@ public class PlayerMovement : MonoBehaviour
     void ResetSnare()
     {
         prototypeScript.hasSnare = false;
+        increaseSnareCharge = false;
         //Debug.Log("Got Snare");
+    }
+
+    void ResetFloat()
+    {
+        increaseFloatCharge = false;
+    }
+
+    void ResetAll()
+    {
+        GeneratorScript.resetStoneHUD = true;
+        ResetPoison();
+        ResetSpeed();
+        ResetSnare();
+        ResetFloat();
     }
 }
