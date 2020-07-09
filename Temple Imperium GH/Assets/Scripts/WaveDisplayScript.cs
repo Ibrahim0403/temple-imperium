@@ -23,7 +23,7 @@ public class WaveDisplayScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waveDisplay = ("Round: " + roundManagerScript.activeRound + "\nEnemies Left: " + roundManagerScript.maxEnemiesPerRound + "\nKills: " + roundManagerScript.killCounter + "\nTime: " + Mathf.Round(roundManagerScript.roundTime)); //displays ammo count
+        waveDisplay = ("Round: " + roundManagerScript.activeRound + "\nEnemies Left: " + roundManagerScript.maxEnemiesPerRound + "\nKills: " + roundManagerScript.killCounter + "\nTime: " + string.Format("{0}:{1}", roundManagerScript.minutes.ToString("00"), roundManagerScript.seconds.ToString("00"))); //displays ammo count
         textMesH.text = waveDisplay;
     }
 }

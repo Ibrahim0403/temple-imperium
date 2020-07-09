@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class RoundManagerScript : MonoBehaviour
 {
+    public GameObject gameOverUI;
+
     public int enemiesPerSpawner;
     public int activeRound;
     public int maxEnemiesPerRound;
     public int killCounter = 0;
 
-    public float roundTime = 60f;
+    public float roundTime;
+    public float seconds;
+    public float minutes;
 
     public List<SpawnerScript> spawners = new List<SpawnerScript>();
 
@@ -18,6 +22,7 @@ public class RoundManagerScript : MonoBehaviour
 
     void Start()
     {
+        roundTime = 50f;
         roundTimeMax = roundTime;
         Debug.Log("Round Started");
     }
@@ -29,9 +34,11 @@ public class RoundManagerScript : MonoBehaviour
             BeginRound();
         }
 
-        if (roundTime <= 0f)
+        if (roundTime <= 0f) //round time limit reached
         {
-            Debug.Log("Time ended");
+            gameOverUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0f;
         }
 
         BeginTimer();
@@ -70,13 +77,15 @@ public class RoundManagerScript : MonoBehaviour
             activeRound += 1;
             Debug.Log("Round ended");
             BeginRound();
-            roundTimeMax = roundTimeMax + 10f;
+            roundTimeMax = roundTimeMax + 30f;
             roundTime = roundTimeMax;
         }
     }
 
     void BeginTimer()
     {
+        seconds = (roundTime % 60);
+        minutes = Mathf.Floor(roundTime / 60);
         roundTime -= Time.deltaTime;
     }
 }
