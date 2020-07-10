@@ -26,7 +26,7 @@ public class StoneChargeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxCharge = 10f;
+        maxCharge = 30f;
         //poisonCharge = 50f;
         //speedCharge = 50f;
         //snareCharge = 50f;
