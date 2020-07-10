@@ -5761,6 +5761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 903217537}
   enemiesPerSpawner: 0
+  mediumEnemiesCount: 0
+  largeEnemiesCount: 0
   activeRound: 1
   maxEnemiesPerRound: 0
   killCounter: 0

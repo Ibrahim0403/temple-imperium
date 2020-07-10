@@ -7,6 +7,8 @@ public class RoundManagerScript : MonoBehaviour
     public GameObject gameOverUI;
 
     public int enemiesPerSpawner;
+    public int mediumEnemiesCount;
+    public int largeEnemiesCount;
     public int activeRound;
     public int maxEnemiesPerRound;
     public int killCounter = 0;
@@ -22,6 +24,8 @@ public class RoundManagerScript : MonoBehaviour
 
     void Start()
     {
+        mediumEnemiesCount = 1;
+        largeEnemiesCount = 1;
         roundTime = 50f;
         roundTimeMax = roundTime;
         Debug.Log("Round Started");
@@ -29,6 +33,8 @@ public class RoundManagerScript : MonoBehaviour
 
     void Update()
     {
+        SpawnerScript.currentRound = activeRound;
+
         if (Input.GetKeyDown(KeyCode.G))
         {
             BeginRound();
@@ -56,6 +62,20 @@ public class RoundManagerScript : MonoBehaviour
             for (int i = 0; i < spawners.Count; i++)
             {
                 spawners[i].Spawn(enemiesPerSpawner);
+            }
+
+            if (activeRound > 1)
+            {
+                spawners[Random.Range(0, 3)].SpawnMediumEnemy(mediumEnemiesCount);
+                maxEnemiesPerRound += mediumEnemiesCount;
+                mediumEnemiesCount += 1;
+            }
+
+            if (activeRound == SpawnerScript.spawnLargeEnemyRound)
+            {
+                spawners[Random.Range(0, 3)].SpawnLargeEnemy(largeEnemiesCount);
+                maxEnemiesPerRound += largeEnemiesCount;
+                largeEnemiesCount += largeEnemiesCount;
             }
 
             roundEnded = false;
