@@ -30,7 +30,7 @@ public class RoundManagerScript : MonoBehaviour
         Debug.Log("Round Started");
     }
 
-    void FixedUpdate()
+    void Update()
     {
         SpawnerScript.currentRound = activeRound;
 

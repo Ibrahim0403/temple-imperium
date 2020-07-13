@@ -153,7 +153,6 @@ public class PlayerMovement : MonoBehaviour
         {
             speed += 5f;
             speedChanged = true;
-            EnemyController.speedChanged = true;
         }
         ResetPoison();
         ResetSnare();
@@ -189,8 +188,6 @@ public class PlayerMovement : MonoBehaviour
         { 
             speed -= 5f;
             speedChanged = false;
-            EnemyController.speedChanged = false;
-            EnemyController.hasOtherStarStone = true;
             increaseSpeedCharge = false;
             //Debug.Log("Got Speed");
         }

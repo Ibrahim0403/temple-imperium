@@ -6144,7 +6144,7 @@ MonoBehaviour:
   activeRound: 1
   maxEnemiesPerRound: 0
   killCounter: 0
-  roundTime: 50
+  roundTime: 60
   seconds: 0
   minutes: 0
   spawners:

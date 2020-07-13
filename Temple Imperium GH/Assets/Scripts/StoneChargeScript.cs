@@ -46,6 +46,7 @@ public class StoneChargeScript : MonoBehaviour
         else if (speedCharge >= maxCharge && !enemyChargePoison && !enemyChargeSnare && !enemyChargeFloat)
         {
             enemyChargeSpeed = true;
+            EnemyController.speedChanged = true;
 
         }
         else if (snareCharge >= maxCharge && !enemyChargePoison && !enemyChargeSpeed && !enemyChargeFloat)
@@ -97,6 +98,7 @@ public class StoneChargeScript : MonoBehaviour
             else
             {
                 enemyChargeSpeed = false;
+                EnemyController.hasOtherStarStone = true;
             }
 
             if (PlayerMovement.increaseSpeedCharge && speedCharge <= 0f)

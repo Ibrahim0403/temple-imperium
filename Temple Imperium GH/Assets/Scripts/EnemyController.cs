@@ -5,16 +5,17 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    public GameObject[] enemies;
+
     public float lookRadius = 10f;
 
     public bool speedSlowed;
-
     public bool revertSpeed;
 
     public static bool speedChanged;
-
     public static bool hasOtherStarStone;
 
+    private EnemyController enemyController;
     private float defaultSpeed;
 
     Transform character;
@@ -22,6 +23,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         speedChanged = false;
         revertSpeed = false;
         hasOtherStarStone = false;
@@ -57,14 +59,22 @@ public class EnemyController : MonoBehaviour
 
     void ResetSpeed()
     {
-        agent.speed = defaultSpeed;
-        revertSpeed = false;
+        foreach (GameObject enemy in enemies)
+        {
+            enemyController = enemy.GetComponent<EnemyController>();
+            enemyController.agent.speed = defaultSpeed;
+            enemyController.revertSpeed = false;
+        }
         hasOtherStarStone = false;
     }
 
     void ChangeSpeed()
     {
-        agent.speed += 1;
+        foreach (GameObject enemy in enemies)
+        {
+            enemyController = enemy.GetComponent<EnemyController>();
+            enemyController.agent.speed += 1;
+        }
         speedChanged = false;
     }
 
