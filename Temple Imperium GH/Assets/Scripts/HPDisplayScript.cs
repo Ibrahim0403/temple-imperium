@@ -21,7 +21,7 @@ public class HPDisplayScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthDisplay = ("HP: " + HealthScript.playerHealth); //displays ammo count
+        healthDisplay = (PlayerStats.playerHealth.ToString()); //displays ammo count
         textMesH.text = healthDisplay;
     }
 }

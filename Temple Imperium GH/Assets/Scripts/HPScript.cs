@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class HPScript : MonoBehaviour
 {
     public Slider slider;
+    public Gradient gradient;
+    public Image colour;
 
     public void SetHP(float hp)
     {
@@ -16,5 +18,15 @@ public class HPScript : MonoBehaviour
     {
         slider.maxValue = hp;
         slider.value = hp;
+    }
+
+    public void PlayerHealthSetBar()
+    {
+        colour.color = gradient.Evaluate(1f);
+    }
+
+    public void UpdatePlayerBar()
+    {
+        colour.color = gradient.Evaluate(slider.normalizedValue);
     }
 }

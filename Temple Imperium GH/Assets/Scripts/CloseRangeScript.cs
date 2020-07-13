@@ -30,7 +30,7 @@ public class CloseRangeScript : MonoBehaviour
             if (hit.transform.tag == "Player")
             {
                 //Debug.Log(hit.transform.gameObject);
-                Debug.Log("Melee");
+                //Debug.Log("Melee");
                 if (!hitPlayer)
                 {
                     hitPlayer = true;

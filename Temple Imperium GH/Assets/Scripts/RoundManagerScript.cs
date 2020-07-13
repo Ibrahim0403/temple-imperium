@@ -26,12 +26,11 @@ public class RoundManagerScript : MonoBehaviour
     {
         mediumEnemiesCount = 1;
         largeEnemiesCount = 1;
-        roundTime = 50f;
         roundTimeMax = roundTime;
         Debug.Log("Round Started");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         SpawnerScript.currentRound = activeRound;
 
@@ -40,7 +39,7 @@ public class RoundManagerScript : MonoBehaviour
             BeginRound();
         }
 
-        if (roundTime <= 0f) //round time limit reached
+        if (roundTime <= 0f || PlayerStats.playerHealth <= 0) //round time limit reached
         {
             gameOverUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
