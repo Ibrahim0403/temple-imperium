@@ -17,6 +17,15 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 2.0f;
 
+    //AJAZ CODE
+    public float basespeed = 12f;
+    public float doublespeed;
+
+    AudioSource audioSource;
+
+    private bool isCrouching = false;
+    //AJAZ CODE
+
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask; //control what sphere checks for
@@ -43,6 +52,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //AJAZ CODE
+        audioSource = GetComponent<AudioSource>();
+        //AJAZ CODE
+
         speedChanged = false;
 
         primaryScript = primaryWeapon.GetComponent<GunScript>();
@@ -56,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Debug.Log(speed);
+        doublespeed = basespeed + 4f;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -63,6 +77,38 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2.0f;
         }
+
+        //AJAZ CODE
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded && controller.height == 3f)
+        {
+            speed = doublespeed;
+        }
+        else
+        {
+            speed = basespeed;
+        }
+
+        if (controller.isGrounded == true && controller.velocity.magnitude > 1f && audioSource.isPlaying == false)
+        {
+            audioSource.volume = Random.Range(0.8f, 1f);
+            audioSource.pitch = Random.Range(0.8f, 1.1f);
+            audioSource.Play();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (isCrouching == false)
+            {
+                controller.height = 1.5f;
+                isCrouching = true;
+            }
+            else
+            {
+                controller.height = 3f;
+                isCrouching = false;
+            }
+        }
+        //AJAZ CODE
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -151,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!speedChanged)
         {
-            speed += 5f;
+            basespeed += 5f;
             speedChanged = true;
         }
         ResetPoison();
@@ -186,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (speedChanged) 
         { 
-            speed -= 5f;
+            basespeed -= 5f;
             speedChanged = false;
             increaseSpeedCharge = false;
             //Debug.Log("Got Speed");
