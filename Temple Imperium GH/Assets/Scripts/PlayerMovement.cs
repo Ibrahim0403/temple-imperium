@@ -17,20 +17,21 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 2.0f;
 
-    //AJAZ CODE
+    //AJAZ CODE - START
     public float basespeed = 12f;
     public float doublespeed;
 
     AudioSource audioSource;
 
     private bool isCrouching = false;
-    //AJAZ CODE
+    //AJAZ CODE - END
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask; //control what sphere checks for
     public bool isGrounded;
     public bool speedChanged;
+    public bool floatChanged;
 
     public Vector3 velocity;
 
@@ -52,9 +53,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //AJAZ CODE
+        //AJAZ CODE - START
         audioSource = GetComponent<AudioSource>();
-        //AJAZ CODE
+        //AJAZ CODE - START
 
         speedChanged = false;
 
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2.0f;
         }
 
-        //AJAZ CODE
+        //AJAZ CODE - END
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded && controller.height == 3f)
         {
             speed = doublespeed;
@@ -108,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
                 isCrouching = false;
             }
         }
-        //AJAZ CODE
+        //AJAZ CODE - END
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -217,6 +218,11 @@ public class PlayerMovement : MonoBehaviour
 
     void GiveFloat()
     {
+        if (!floatChanged)
+        {
+            jumpHeight += 3f;
+            floatChanged = true;
+        }
         ResetPoison();
         ResetSpeed();
         ResetSnare();
@@ -248,7 +254,12 @@ public class PlayerMovement : MonoBehaviour
 
     void ResetFloat()
     {
-        increaseFloatCharge = false;
+        if (floatChanged)
+        {
+            jumpHeight -= 3f;
+            floatChanged = false;
+            increaseFloatCharge = false;
+        }
     }
 
     void ResetAll()

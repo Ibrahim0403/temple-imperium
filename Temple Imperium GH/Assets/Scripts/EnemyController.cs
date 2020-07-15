@@ -5,17 +5,20 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject[] enemies;
 
     public float lookRadius = 10f;
 
     public bool speedSlowed;
     public bool revertSpeed;
 
+    public GameObject[] enemies;
+
     public static bool speedChanged;
     public static bool hasOtherStarStone;
 
     private EnemyController enemyController;
+    private CloseRangeScript closeRangeScript;
+
     private float defaultSpeed;
 
     Transform character;
@@ -23,17 +26,18 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         speedChanged = false;
         revertSpeed = false;
         hasOtherStarStone = false;
-        character = PlayerManager.instance.player.transform; //get player
+        character = PlayerManager.instance.player.transform; //get playerg
         agent = GetComponent<NavMeshAgent>();
         defaultSpeed = agent.speed;
     }
 
     void Update()
     {
+        Debug.Log(" speed: " + speedChanged);
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float distance = Vector3.Distance(character.position, transform.position); //gets distance between player and enemy
 
         if (distance <= lookRadius) //check if player should be chased
@@ -55,6 +59,26 @@ public class EnemyController : MonoBehaviour
         {
             ResetSpeed();
         }
+
+        if (StoneChargeScript.enemyChargePoison)
+        {
+            DamageBoost();
+        }
+
+        if (!StoneChargeScript.enemyChargePoison)
+        {
+            DamageRevert();
+        }
+    }
+
+    void ChangeSpeed()
+    {
+        foreach (GameObject enemy in enemies)
+        {
+            enemyController = enemy.GetComponent<EnemyController>();
+            enemyController.agent.speed += 1;
+        }
+        speedChanged = false;
     }
 
     void ResetSpeed()
@@ -68,20 +92,30 @@ public class EnemyController : MonoBehaviour
         hasOtherStarStone = false;
     }
 
-    void ChangeSpeed()
-    {
-        foreach (GameObject enemy in enemies)
-        {
-            enemyController = enemy.GetComponent<EnemyController>();
-            enemyController.agent.speed += 1;
-        }
-        speedChanged = false;
-    }
-
     void SpeedDecrease()
     {
         agent.speed = 0.5f;
         speedSlowed = false;
+    }
+
+    void DamageBoost()
+    {
+        foreach (GameObject enemy in enemies)
+        {
+            closeRangeScript = enemy.GetComponent<CloseRangeScript>();
+            closeRangeScript.hasDamageBoost = true;
+            ProjectileScript.increaseDamage = true;
+        }
+    }
+
+    void DamageRevert()
+    {
+        foreach (GameObject enemy in enemies)
+        {
+            closeRangeScript = enemy.GetComponent<CloseRangeScript>();
+            closeRangeScript.hasDamageBoost = false;
+            ProjectileScript.increaseDamage = false;           
+        }
     }
 
     private void OnDrawGizmosSelected()
