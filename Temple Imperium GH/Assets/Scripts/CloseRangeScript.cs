@@ -5,8 +5,10 @@ using UnityEngine.AI;
 
 public class CloseRangeScript : MonoBehaviour
 {
+    public int meleeDamage;
+    public int boostDamage;
 
-    public int meleeDamage = 5;
+    public bool hasDamageBoost;
 
     private GameObject playerObject;
 
@@ -16,6 +18,9 @@ public class CloseRangeScript : MonoBehaviour
 
     void Start()
     {
+        hasDamageBoost = false;
+        meleeDamage = 10;
+        boostDamage = 0;
         playerObject = GameObject.Find("Player");
         player = playerObject.GetComponent<PlayerStats>();
         hitPlayer = false;
@@ -23,7 +28,16 @@ public class CloseRangeScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        RaycastHit hit;
+        if (hasDamageBoost)
+        {
+            boostDamage = 10;
+        }
+        else
+        {
+            boostDamage = 0;
+        }
+
+            RaycastHit hit;
         transform.LookAt(playerObject.transform);
         if (Physics.Raycast(transform.position, transform.forward, out hit, 3.1f)) //if ray hits something within range
         {
@@ -42,7 +56,7 @@ public class CloseRangeScript : MonoBehaviour
 
     IEnumerator AttackPlayer()
     {
-        player.Attack(meleeDamage);
+        player.Attack(meleeDamage + boostDamage);
         yield return new WaitForSeconds(2f); //delay for next attack
         hitPlayer = false;
     }
