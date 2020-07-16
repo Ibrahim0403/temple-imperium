@@ -36,7 +36,7 @@ public class TargetScript : MonoBehaviour
 
         if (targetHealth <= 0.0f)
         {
-            ammoBoxRNG = Random.Range(1, 1);
+            ammoBoxRNG = Random.Range(1, 2);
             Vector3 deathPOS = this.gameObject.transform.position;
             TargetDie();
             if (ammoBoxCount == 1 && ammoBoxRNG == 1)

@@ -3062,40 +3062,32 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868259078}
-  m_LocalRotation: {x: -0.1079069, y: -0.05722674, z: -0.006221867, w: 0.9924931}
-  m_LocalPosition: {x: 0.36000013, y: -0.4500001, z: 0.7499998}
-  m_LocalScale: {x: 0.30000007, y: 0.5, z: 1}
+  m_LocalRotation: {x: -0.62691027, y: -0.044799305, z: -0.03614739, w: 0.77696204}
+  m_LocalPosition: {x: -0.417, y: -0.328, z: 0.701}
+  m_LocalScale: {x: 0.20414698, y: 0.07570618, z: 1.3937}
   m_Children: []
   m_Father: {fileID: 2021305834}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -12.41, y: -6.6, z: 0}
---- !u!114 &868259080
-MonoBehaviour:
+  m_LocalEulerAnglesHint: {x: -77.798004, y: -6.6000004, z: 0}
+--- !u!95 &868259080
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868259078}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3aef5028d38b2944809ee2da2a93eea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunDamage: 10
-  gunRange: 100
-  gunROF: 10
-  reloadTime: 1
-  fpsCamera: {fileID: 963194227}
-  muzzleFlash: {fileID: 116501091}
-  hitEffect: {fileID: 1025283966509305}
-  bullet: {fileID: 0}
-  bulletSpeed: 4
-  bulletPOS: 0.15
-  hasPoison: 0
-  hasSnare: 0
-  ammoMagCurrent: 30
-  ammoReserveCurrent: 120
-  animator: {fileID: 9338256}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5a3ce83c3f3e94438388f7cf22eb0cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &868259081
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3127,7 +3119,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e361db93c8e3fb94191d8b63ae193641, type: 2}
+  - {fileID: 2100000, guid: 9afefba9113e1a44aa43719fd0a140dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4529,6 +4521,7 @@ MonoBehaviour:
   gunRange: 100
   gunROF: 1
   reloadTime: 3
+  defaultDamage: 0
   fpsCamera: {fileID: 963194227}
   muzzleFlash: {fileID: 116501091}
   hitEffect: {fileID: 1025283966509305}
@@ -5021,6 +5014,7 @@ MonoBehaviour:
     m_Bits: 256
   isGrounded: 0
   speedChanged: 0
+  floatChanged: 0
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &1272787861
 MonoBehaviour:
@@ -6196,6 +6190,7 @@ MonoBehaviour:
   gunRange: 100
   gunROF: 7
   reloadTime: 2
+  defaultDamage: 0
   fpsCamera: {fileID: 963194227}
   muzzleFlash: {fileID: 116501091}
   hitEffect: {fileID: 1025283966509305}
@@ -7428,6 +7423,7 @@ MonoBehaviour:
   gunRange: 20
   gunROF: 10
   reloadTime: 1
+  defaultDamage: 0
   fpsCamera: {fileID: 963194227}
   muzzleFlash: {fileID: 116501091}
   hitEffect: {fileID: 1025283966509305}
@@ -7514,6 +7510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2021305834}
+  - component: {fileID: 2021305835}
   m_Layer: 0
   m_Name: Weapon Parts
   m_TagString: Untagged
@@ -7536,6 +7533,22 @@ Transform:
   m_Father: {fileID: 963194228}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2021305835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021305833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9f92eb2f02e0946bd0c6d8f0054af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeleeWeapon: {fileID: 868259078}
+  meleeDamage: 25
+  meleeRange: 5
+  fpsCamera: {fileID: 963194227}
 --- !u!1 &2053335708
 GameObject:
   m_ObjectHideFlags: 0
