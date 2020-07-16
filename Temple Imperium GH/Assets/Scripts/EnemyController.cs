@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour
 
     private EnemyController enemyController;
     private CloseRangeScript closeRangeScript;
+    private TargetScript targetScript;
 
     private float defaultSpeed;
 
@@ -36,7 +37,6 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(" speed: " + speedChanged);
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float distance = Vector3.Distance(character.position, transform.position); //gets distance between player and enemy
 
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             enemyController = enemy.GetComponent<EnemyController>();
-            enemyController.agent.speed = defaultSpeed;
+            enemyController.agent.speed = enemyController.defaultSpeed;
             enemyController.revertSpeed = false;
         }
         hasOtherStarStone = false;

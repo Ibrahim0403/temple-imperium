@@ -5021,6 +5021,7 @@ MonoBehaviour:
     m_Bits: 256
   isGrounded: 0
   speedChanged: 0
+  floatChanged: 0
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &1272787861
 MonoBehaviour:
