@@ -24,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
     AudioSource audioSource;
 
     private bool isCrouching = false;
+
+    //new code
+    public float Xposition;
+    public float Yposition;
+    public float Zposition;
+    Vector3 SavePosition;
+    //new code end
+
     //AJAZ CODE - END
 
     public Transform groundCheck;
@@ -109,6 +117,8 @@ public class PlayerMovement : MonoBehaviour
                 isCrouching = false;
             }
         }
+
+
         //AJAZ CODE - END
 
         float x = Input.GetAxis("Horizontal");
