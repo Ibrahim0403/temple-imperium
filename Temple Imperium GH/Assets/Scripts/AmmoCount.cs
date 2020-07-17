@@ -6,7 +6,8 @@ using TMPro;
 public class AmmoCount : MonoBehaviour
 {
 
-    public string ammoDisplay;
+    public static string ammoDisplay;
+    public static string TempAmmo;
 
     private TextMeshProUGUI textMesH;
 
