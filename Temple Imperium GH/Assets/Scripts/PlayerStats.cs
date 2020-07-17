@@ -10,6 +10,12 @@ public class PlayerStats : MonoBehaviour
 
     public static int playerHealth = 100;
 
+    //new code
+    public static int ShieldHealth = 50;
+
+    public static int TempHealth;
+    //new code end
+
     private int maxHealth;
 
     private float timeCheck = 0.0f;
@@ -30,7 +36,12 @@ public class PlayerStats : MonoBehaviour
         {
             StartCoroutine(RegenHealth());
         }
+
+ 
+
         //Debug.Log(timeCheck);
+
+
     }
 
     public void Attack(int dmg) //damage player
