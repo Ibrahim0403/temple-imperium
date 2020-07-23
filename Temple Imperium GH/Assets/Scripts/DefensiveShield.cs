@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Ajaz Code
 public class DefensiveShield : MonoBehaviour
 {
-    public float cooldownDefensive = 2;
+    public float cooldownDefensive = 20;
     public float abilityUp = 0;
+    public HPScript HealthBar;
+    public float currentHP;
+    
 
-    public 
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +27,10 @@ public class DefensiveShield : MonoBehaviour
                 PlayerStats.playerHealth += 50;
                 abilityUp = Time.time + cooldownDefensive;
                 print("defensive ability used");
+                currentHP = PlayerStats.playerHealth;
+                HealthBar.SetHP(currentHP);
+                HealthBar.UpdatePlayerBar();
             }
         }
-
     }
 }
