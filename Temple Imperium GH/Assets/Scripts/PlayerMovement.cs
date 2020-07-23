@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject prototypeWeapon;
 
     public GameObject InteractHUD;
+    public GameObject cogInteractHUD;
 
     public CharacterController controller; //reference the controller to have access
 
@@ -184,6 +185,30 @@ public class PlayerMovement : MonoBehaviour
             InteractHUD.SetActive(true);
             GeneratorScript.hasInteracted = true;
         }
+
+        if (other.gameObject.tag == "PoisonCog")
+        {
+            cogInteractHUD.SetActive(true);
+            FixGeneratorScript.pickPoisonCOG = true;
+        }
+
+        if (other.gameObject.tag == "SpeedCog")
+        {
+            cogInteractHUD.SetActive(true);
+            FixGeneratorScript.pickSpeedCOG = true;
+        }
+
+        if (other.gameObject.tag == "SnareCog")
+        {
+            cogInteractHUD.SetActive(true);
+            FixGeneratorScript.pickSnareCOG = true;
+        }
+
+        if (other.gameObject.tag == "FloatCog")
+        {
+            cogInteractHUD.SetActive(true);
+            FixGeneratorScript.pickFloatCOG = true;
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -192,6 +217,30 @@ public class PlayerMovement : MonoBehaviour
         {
             InteractHUD.SetActive(false);
             GeneratorScript.hasInteracted = false;
+        }
+
+        if (other.gameObject.tag == "PoisonCog")
+        {
+            FixGeneratorScript.pickPoisonCOG = false;
+            cogInteractHUD.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "SpeedCog")
+        {
+            FixGeneratorScript.pickPoisonCOG = false;
+            cogInteractHUD.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "SnareCog")
+        {
+            cogInteractHUD.SetActive(false);
+            FixGeneratorScript.pickSnareCOG = false;
+        }
+
+        if (other.gameObject.tag == "FloatCog")
+        {
+            cogInteractHUD.SetActive(false);
+            FixGeneratorScript.pickFloatCOG = false;
         }
     }
 

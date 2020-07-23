@@ -6,7 +6,12 @@ public class TargetScript : MonoBehaviour
 {
     public GameObject spawnAmmoBox;
 
-    public float targetHealth = 50f;
+    public GameObject poisonCog;
+    public GameObject speedCog;
+    public GameObject snareCog;
+    public GameObject floatCog;
+
+    public float targetHealth;
 
     public HPScript hpBar;
 
@@ -44,6 +49,46 @@ public class TargetScript : MonoBehaviour
                 GameObject ammoBoxGO = Instantiate(spawnAmmoBox, deathPOS + (Vector3.up * 1), Quaternion.identity);
                 Destroy(ammoBoxGO, 60f);
             }
+
+            if (PlayerMovement.increasePoisonCharge) //count kills during starstone effects
+            {
+                FixGeneratorScript.poisonKills += 1;
+            }
+            if (PlayerMovement.increaseSpeedCharge)
+            {
+                FixGeneratorScript.speedKills += 1;
+            }
+            if (PlayerMovement.increaseSnareCharge)
+            {
+                FixGeneratorScript.snareKills += 1;
+            }
+            if (PlayerMovement.increaseFloatCharge)
+            {
+                FixGeneratorScript.floatKills += 1;
+            }
+
+            if (FixGeneratorScript.poisonKills == 15)
+            {
+                GameObject poisonCogGO = Instantiate(poisonCog, deathPOS + (Vector3.up * 1), Quaternion.identity);
+                FixGeneratorScript.poisonKills += 1;
+            }
+            if (FixGeneratorScript.speedKills == 15)
+            {
+                GameObject speedCogGO = Instantiate(speedCog, deathPOS + (Vector3.up * 1), Quaternion.identity);
+                FixGeneratorScript.speedKills += 1;
+            }
+            if (FixGeneratorScript.snareKills == 15)
+            {
+                GameObject snareCogGO = Instantiate(snareCog, deathPOS + (Vector3.up * 1), Quaternion.identity);
+                FixGeneratorScript.snareKills += 1;
+            }
+            if (FixGeneratorScript.floatKills == 15)
+            {
+                GameObject floatCogGO = Instantiate(floatCog, deathPOS + (Vector3.up * 1), Quaternion.identity);
+                FixGeneratorScript.floatKills += 1;
+            }
+
+            //Debug.Log(FixGeneratorScript.poisonKills);
         }
     }
 
