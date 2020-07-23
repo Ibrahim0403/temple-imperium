@@ -19,6 +19,8 @@ public class FixGeneratorScript : MonoBehaviour
 
     public static int poisonKills, speedKills, snareKills, floatKills;
 
+    private RoundManagerScript roundManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,7 +69,7 @@ public class FixGeneratorScript : MonoBehaviour
             floatGenerator.SetActive(true);
         }
 
-        if (hasPoisonCOG && hasSpeedCOG && hasSnareCOG && hasFloatCOG)
+        if (hasPoisonCOG && hasSpeedCOG && hasSnareCOG && hasFloatCOG && roundManagerScript.activeRound >= 8) //must have all generator parts and completed round 7 or above to win
         {
             gameWonHUD.SetActive(true);
             Time.timeScale = 0f;

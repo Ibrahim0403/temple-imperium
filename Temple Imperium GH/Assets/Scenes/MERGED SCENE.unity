@@ -3664,6 +3664,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Grenade: {fileID: 5697991700413003888, guid: d4c25ad051bbfd841b817baf217165ae, type: 3}
   throwForce: 10
+  grenadeCooldown: 45
+  grenadeAvailable: 0
 --- !u!1 &966962523
 GameObject:
   m_ObjectHideFlags: 0
