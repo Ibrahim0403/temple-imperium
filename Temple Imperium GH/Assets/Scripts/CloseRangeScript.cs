@@ -10,6 +10,8 @@ public class CloseRangeScript : MonoBehaviour
 
     public bool hasDamageBoost;
 
+    public float ROFincrease; //rate of fire increase
+
     private GameObject playerObject;
 
     private PlayerStats player;
@@ -37,7 +39,16 @@ public class CloseRangeScript : MonoBehaviour
             boostDamage = 0;
         }
 
-            RaycastHit hit;
+        if (StoneChargeScript.enemyChargeSnare)
+        {
+            ROFincrease = 1f;
+        }
+        else
+        {
+            ROFincrease = 0f;
+        }
+
+        RaycastHit hit;
         transform.LookAt(playerObject.transform);
         if (Physics.Raycast(transform.position, transform.forward, out hit, 3.1f)) //if ray hits something within range
         {
@@ -57,7 +68,7 @@ public class CloseRangeScript : MonoBehaviour
     IEnumerator AttackPlayer()
     {
         player.Attack(meleeDamage + boostDamage);
-        yield return new WaitForSeconds(2f); //delay for next attack
+        yield return new WaitForSeconds(2f - ROFincrease); //delay for next attack
         hitPlayer = false;
     }
 }
