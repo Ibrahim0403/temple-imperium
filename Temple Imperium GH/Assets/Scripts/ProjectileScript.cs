@@ -5,10 +5,8 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     public float projectileSpeed = 10f;
-
-    public int ROFincrease; //rate of fire increase
-    public int destroyIncrease;
     public int projectileDamage;
+
     public int boostDamage;
 
     public static bool increaseDamage;
@@ -21,17 +19,6 @@ public class ProjectileScript : MonoBehaviour
 
     void Update()
     {
-        if (StoneChargeScript.enemyChargeSnare)
-        {
-            ROFincrease = 5;
-            destroyIncrease = 1;
-        }
-        else
-        {
-            ROFincrease = 0;
-            destroyIncrease = 0;
-        }
-
         if (increaseDamage)
         {
             boostDamage = 10;
@@ -41,7 +28,7 @@ public class ProjectileScript : MonoBehaviour
             boostDamage = 0;
         }
 
-        transform.Translate(0, 0, (projectileSpeed + ROFincrease) * Time.deltaTime); //move projectile
+        transform.Translate(0, 0, projectileSpeed * Time.deltaTime); //move projectile
     }
 
     void OnTriggerEnter(Collider other)
@@ -50,6 +37,6 @@ public class ProjectileScript : MonoBehaviour
         if(player != null){
             player.Attack(projectileDamage + boostDamage);
         }
-        Destroy(this.gameObject, (3 - destroyIncrease));
+        Destroy(this.gameObject, 3f);
     }
 }

@@ -18,13 +18,5 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
-    public GameObject player;
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab) && !MeleeScript.hasAttacked)
-        {
-            MeleeScript.hasAttacked = true;
-        }
-    }
+    public GameObject player; 
 }

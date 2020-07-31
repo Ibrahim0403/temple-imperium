@@ -8,7 +8,6 @@ public class GunScript : MonoBehaviour
     public float gunRange = 10f;
     public float gunROF = 10f; //rate of fire
     public float reloadTime = 1f;
-    public float defaultDamage;
 
     public Camera fpsCamera; //reference the fps camera
 
@@ -41,7 +40,6 @@ public class GunScript : MonoBehaviour
 
     void Start()
     {
-        defaultDamage = gunDamage;
         ammoMagMax = ammoMagCurrent;
         ammoReserveMax = ammoReserveCurrent;
     }
@@ -66,7 +64,6 @@ public class GunScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Debug.Log(nextShot);
         ammoMagazine = ammoMagCurrent;
         ammoReserve = ammoReserveCurrent;
         if (hasRefilled)
@@ -120,15 +117,6 @@ public class GunScript : MonoBehaviour
                     }
                 }
             }
-        }
-
-        if (StoneChargeScript.enemyChargeFloat) //increase enemy health by reducing weapon damage
-        {
-            gunDamage = defaultDamage / 1.5f;
-        }
-        else
-        {
-            gunDamage = defaultDamage;
         }
     }
 
