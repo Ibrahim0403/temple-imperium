@@ -7,10 +7,14 @@ public class GeneratorScript : MonoBehaviour
     public GameObject GeneratorUI;
     public GameObject playerPoison, playerSpeed, playerSnare, playerFloat, enemyPoison, enemySpeed, enemySnare, enemyFloat;
 
+    public GameObject repairButton;
+
     public bool isOpen = false;
 
     public static bool hasInteracted = false;
     public static bool resetStoneHUD = false;
+
+    private RoundManagerScript roundManagerScript;
 
     void Start()
     {
@@ -20,7 +24,7 @@ public class GeneratorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasInteracted)
+        if (hasInteracted) //open generator UI
         {
             if (Input.GetKeyDown(KeyCode.I) && isOpen)
             {
@@ -33,10 +37,6 @@ public class GeneratorScript : MonoBehaviour
                 GeneratorUI.SetActive(true);
                 isOpen = true;
             }
-        }
-        else if (!hasInteracted)
-        {
-            CloseUI();
         }
 
         if (StoneChargeScript.enemyChargePoison)
@@ -80,6 +80,15 @@ public class GeneratorScript : MonoBehaviour
             ResetHUD();
             resetStoneHUD = false;
         }
+
+        if (Time.time > RoundManagerScript.repairAvailable) //display repair button
+        {
+            repairButton.SetActive(true);
+        }
+        else
+        {
+            repairButton.SetActive(false);
+        }
     }
 
     void CloseUI()
@@ -88,6 +97,16 @@ public class GeneratorScript : MonoBehaviour
         Time.timeScale = 1f;
         GeneratorUI.SetActive(false);
         isOpen = false;
+    }
+
+    public void RepairGenerator()
+    {
+        Debug.Log(Time.time + " repair available in: " + RoundManagerScript.repairAvailable);
+        if (Time.time > RoundManagerScript.repairAvailable) //add 20 seconds to timer
+        {
+            RoundManagerScript.repairAvailable = Time.time + RoundManagerScript.repairCooldown;
+            RoundManagerScript.roundTime += 20f;
+        }
     }
 
     public void PlayerPoison()

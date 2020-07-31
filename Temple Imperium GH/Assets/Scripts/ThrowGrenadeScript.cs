@@ -21,6 +21,6 @@ public class ThrowGrenadeScript : MonoBehaviour
             grenadeRB.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
         }
 
-        Debug.Log(Time.time + " grenade available in: " + grenadeAvailable);
+        //Debug.Log(Time.time + " grenade available in: " + grenadeAvailable);
     }
 }

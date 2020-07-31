@@ -186,6 +186,12 @@ public class PlayerMovement : MonoBehaviour
             GeneratorScript.hasInteracted = true;
         }
 
+        if (other.gameObject.tag == "LabNote")
+        {
+            InteractHUD.SetActive(true);
+            other.gameObject.GetComponent<LabNoteScript>().NoteAvailable = true;
+        }
+
         if (other.gameObject.tag == "PoisonCog")
         {
             cogInteractHUD.SetActive(true);
@@ -217,6 +223,12 @@ public class PlayerMovement : MonoBehaviour
         {
             InteractHUD.SetActive(false);
             GeneratorScript.hasInteracted = false;
+        }
+
+        if (other.gameObject.tag == "LabNote")
+        {
+            InteractHUD.SetActive(false);
+            other.gameObject.GetComponent<LabNoteScript>().NoteAvailable = false;
         }
 
         if (other.gameObject.tag == "PoisonCog")

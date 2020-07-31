@@ -5,7 +5,8 @@ using UnityEngine;
 public class FixGeneratorScript : MonoBehaviour
 {
     public GameObject cogInteractHUD;
-    public GameObject gameWonHUD; 
+    public GameObject gameWonHUD;
+    public GameObject roundManager;
 
     public GameObject poisonGenerator;
     public GameObject speedGenerator;
@@ -24,6 +25,8 @@ public class FixGeneratorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        roundManagerScript = roundManager.GetComponent<RoundManagerScript>();
+
         hasPoisonCOG = false;
         hasSpeedCOG = false;
         hasSnareCOG = false;
@@ -71,8 +74,14 @@ public class FixGeneratorScript : MonoBehaviour
 
         if (hasPoisonCOG && hasSpeedCOG && hasSnareCOG && hasFloatCOG && roundManagerScript.activeRound >= 8) //must have all generator parts and completed round 7 or above to win
         {
-            gameWonHUD.SetActive(true);
             Time.timeScale = 0f;
+            gameWonHUD.SetActive(true);
+            StartCoroutine(EndCutscene());
         }
+    }
+
+    IEnumerator EndCutscene() {
+        yield return new WaitForSecondsRealtime(5f);
+        roundManagerScript.hasCompleted = true;
     }
 }
