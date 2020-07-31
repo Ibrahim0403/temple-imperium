@@ -286,7 +286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 338, y: -165}
+  m_AnchoredPosition: {x: 338, y: -185}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9223660
@@ -2104,7 +2104,6 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
-  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -2187,103 +2186,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!82 &705507996
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705507993}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: cab093690f21db040a8591a20101b1f3,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: 247c9da52dea2384f84c1a68fc87abce, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.117
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &711110224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2896,7 +2798,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 336, y: -84}
+  m_AnchoredPosition: {x: 336, y: -92}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &796624082
@@ -3544,7 +3446,6 @@ MonoBehaviour:
   gunRange: 100
   gunROF: 10
   reloadTime: 1
-  defaultDamage: 0
   fpsCamera: {fileID: 963194227}
   muzzleFlash: {fileID: 116501091}
   hitEffect: {fileID: 1025283966509305}
@@ -4994,7 +4895,6 @@ MonoBehaviour:
   gunRange: 100
   gunROF: 1
   reloadTime: 3
-  defaultDamage: 0
   fpsCamera: {fileID: 963194227}
   muzzleFlash: {fileID: 116501091}
   hitEffect: {fileID: 1025283966509305}
@@ -5478,7 +5378,6 @@ MonoBehaviour:
   secondaryWeapon: {fileID: 1971781975}
   prototypeWeapon: {fileID: 1202286405}
   InteractHUD: {fileID: 711110224}
-  cogInteractHUD: {fileID: 0}
   controller: {fileID: 1272787859}
   speed: 10
   gravity: -19.62
@@ -5520,8 +5419,7 @@ AudioSource:
   m_GameObject: {fileID: 1272787857}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: cab093690f21db040a8591a20101b1f3,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9ee75c210642fd04c920150a472ac4da, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -5530,7 +5428,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 11
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -6708,7 +6606,6 @@ MonoBehaviour:
   gunRange: 100
   gunROF: 7
   reloadTime: 2
-  defaultDamage: 0
   fpsCamera: {fileID: 963194227}
   muzzleFlash: {fileID: 116501091}
   hitEffect: {fileID: 1025283966509305}
@@ -7379,7 +7276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -205.3, y: 139}
+  m_AnchoredPosition: {x: -205.3, y: 175}
   m_SizeDelta: {x: 324.3, y: 81.078}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842303304
@@ -7950,7 +7847,6 @@ MonoBehaviour:
   gunRange: 20
   gunROF: 10
   reloadTime: 1
-  defaultDamage: 0
   fpsCamera: {fileID: 963194227}
   muzzleFlash: {fileID: 116501091}
   hitEffect: {fileID: 1025283966509305}
@@ -8094,7 +7990,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 339, y: -158}
+  m_AnchoredPosition: {x: 339, y: -168}
   m_SizeDelta: {x: 198.14996, y: 75.89725}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2053335710
