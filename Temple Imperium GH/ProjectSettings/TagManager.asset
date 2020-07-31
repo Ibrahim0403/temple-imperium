@@ -14,11 +14,14 @@ TagManager:
   - SnareStone
   - Generator
   - Enemy
+<<<<<<< HEAD:Temple Imperium GH/ProjectSettings/TagManager.asset
   - PoisonCog
   - SpeedCog
   - SnareCog
   - FloatCog
   - LabNote
+=======
+>>>>>>> Ajaz:temple-imperium-master/Temple Imperium GH/ProjectSettings/TagManager.asset
   layers:
   - Default
   - TransparentFX
