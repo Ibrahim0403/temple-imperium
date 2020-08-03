@@ -14,6 +14,11 @@ TagManager:
   - SnareStone
   - Generator
   - Enemy
+  - PoisonCog
+  - SpeedCog
+  - SnareCog
+  - FloatCog
+  - LabNote
   layers:
   - Default
   - TransparentFX

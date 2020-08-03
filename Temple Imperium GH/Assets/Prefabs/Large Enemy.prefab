@@ -575,8 +575,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 100
   speedSlowed: 0
-  speedIncreased: 0
   revertSpeed: 0
+  enemies: []
 --- !u!114 &8603596571222037045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,8 +591,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnAmmoBox: {fileID: 9130444463490891790, guid: 1ae81b4d8ee8557448278467c4582770,
     type: 3}
+  poisonCog: {fileID: 9042365667146063418, guid: 1abe65c1c4c08b547ada7f5cc7db3a2a,
+    type: 3}
+  speedCog: {fileID: 1612994988044643658, guid: c2177e5a84757ef4eae752af1b09b96c,
+    type: 3}
+  snareCog: {fileID: 3916546839354778725, guid: a51719d42e960464e85c73bc90f52745,
+    type: 3}
+  floatCog: {fileID: 5375060640024676383, guid: 639597309637ff448bc8c4758cac5ec7,
+    type: 3}
   targetHealth: 300
-  hpBar: {fileID: 6924380093330671776}
+  hpBar: {fileID: 711299871, guid: c6934b800379fed489de8f117007cff3, type: 3}
   ammoBoxCount: 0
   ammoBoxRNG: 0
 --- !u!114 &7817362961222412150
@@ -622,3 +630,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeDamage: 15
+  boostDamage: 0
+  hasDamageBoost: 0
+  ROFincrease: 0
