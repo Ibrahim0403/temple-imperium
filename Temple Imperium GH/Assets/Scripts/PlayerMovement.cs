@@ -14,24 +14,22 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller; //reference the controller to have access
 
-    public float speed = 12f;
+    public float speed = 12f; //Current speed of the player
     public float gravity = -9.81f;
     public float jumpHeight = 2.0f;
 
     //AJAZ CODE - START
-    public float basespeed = 12f;
-    public float doublespeed;
+    public float basespeed = 12f; //Registers the walking speed
+    public float doublespeed; //Registers the running speed
 
-    AudioSource audioSource;
+    AudioSource audioSource; //References the AudioSource component in Unity
 
-    private bool isCrouching = false;
+    private bool isCrouching = false; //Checks if the player is in a crouching state
 
-    //new code
     public float Xposition;
     public float Yposition;
     public float Zposition;
     Vector3 SavePosition;
-    //new code end
 
     //AJAZ CODE - END
 
@@ -88,8 +86,8 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2.0f;
         }
 
-        //AJAZ CODE - END
-        if (Input.GetKey(KeyCode.LeftShift) && isGrounded && controller.height == 3f)
+        //AJAZ CODE - start
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded && controller.height == 3f) //Allows the player to sprint if they are not in a crouching state
         {
             speed = doublespeed;
         }
@@ -98,14 +96,14 @@ public class PlayerMovement : MonoBehaviour
             speed = basespeed;
         }
 
-        if (controller.isGrounded == true && controller.velocity.magnitude > 1f && audioSource.isPlaying == false)
+        if (controller.isGrounded == true && controller.velocity.magnitude > 1f && audioSource.isPlaying == false) //plays the ground collision sound when landing on the ground after a jump or crouching
         {
             audioSource.volume = Random.Range(0.8f, 1f);
             audioSource.pitch = Random.Range(0.8f, 1.1f);
             audioSource.Play();
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C)) //Changes the player to a crouching state if they are not in one, or reverts them back to normal if they are
         {
             if (isCrouching == false)
             {
