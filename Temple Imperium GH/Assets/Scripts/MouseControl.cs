@@ -12,12 +12,19 @@ public class MouseControl : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
     void Update()
     {
+        if (PauseMenu.Paused == false) //Allows the cursor to roam freely when in menus, but acts as player's camera when not in menus
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
         float mouseX = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
 

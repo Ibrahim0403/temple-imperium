@@ -8,6 +8,8 @@ public class PlayerStats : MonoBehaviour
 
     public HPScript hpBar;
 
+    public int pHealth = 100;
+
     public static int playerHealth = 100;
 
     //new code
@@ -24,6 +26,7 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
+        playerHealth = pHealth;
         maxHealth = playerHealth;
         hpBar.SetMaxHP(playerHealth);
         hpBar.PlayerHealthSetBar();
