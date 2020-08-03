@@ -11,16 +11,16 @@ public class WeaponUI : MonoBehaviour
 
     TextMeshProUGUI WeaponText;
 
-    // Start is called before the first frame update
     void Start()
     {
+        //References the TextMeshPro object in Unity, to allow the text to be changed from within this script
         WeaponText = GetComponent<TextMeshProUGUI>();
         WeaponType = "Primary";
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //Changes the text displayed under the ammo to fit whatever weapon type is currently being used
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             WeaponType = "Primary";
