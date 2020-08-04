@@ -4044,7 +4044,7 @@ MonoBehaviour:
     Shooting is done with the left mouse button while holding down the right mouse
     button. Use the C key to crouch, the spacebar to jump, and the left shitft to
     run. Saving  is done by hitting the number 8 key, and you can load with the number
-    9 key.
+    9 key. The Q key will pause the game.
 
     Click here to see the next tutorial.'
   m_isRightToLeft: 0
