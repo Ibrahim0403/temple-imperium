@@ -45,7 +45,7 @@ public class WeaponSwitch : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1)) //switch weapon with number keycodes
         {
             currentWeapon = 0;
         }

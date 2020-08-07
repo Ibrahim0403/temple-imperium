@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
         speedChanged = false;
         revertSpeed = false;
         hasOtherStarStone = false;
-        character = PlayerManager.instance.player.transform; //get playerg
+        character = PlayerManager.instance.player.transform; //get player position
         agent = GetComponent<NavMeshAgent>();
         defaultSpeed = agent.speed;
     }
@@ -76,7 +76,7 @@ public class EnemyController : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             enemyController = enemy.GetComponent<EnemyController>();
-            enemyController.agent.speed += 1;
+            enemyController.agent.speed += 1; //add speed
         }
         speedChanged = false;
     }
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             enemyController = enemy.GetComponent<EnemyController>();
-            enemyController.agent.speed = enemyController.defaultSpeed;
+            enemyController.agent.speed = enemyController.defaultSpeed; //revert speed
             enemyController.revertSpeed = false;
         }
         hasOtherStarStone = false;
@@ -120,7 +120,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lookRadius);
+        Gizmos.color = Color.red; //set colour to red
+        Gizmos.DrawWireSphere(transform.position, lookRadius); //draw wire sphere
     }
 }

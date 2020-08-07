@@ -12,11 +12,11 @@ public class PlayerStats : MonoBehaviour
 
     public static int playerHealth = 100;
 
-    //new code
+    //AJAZ CODE - START
     public static int ShieldHealth = 50;
 
     public static int TempHealth;
-    //new code end
+    //AJAZ CODE - END
 
     private int maxHealth;
 
@@ -35,9 +35,9 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        if (playerHealth != maxHealth && !isRegenerating)
+        if (playerHealth != maxHealth && !isRegenerating) 
         {
-            StartCoroutine(RegenHealth());
+            StartCoroutine(RegenHealth()); //coroutine for regening health
         }
 
  

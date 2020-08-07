@@ -47,14 +47,14 @@ public class RoundManagerScript : MonoBehaviour
     {
         SpawnerScript.currentRound = activeRound;
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return)) //begin game by pressing enter during cutscene
         {
             Time.timeScale = 1f;
             StartScene.SetActive(false);
             BeginRound();
         }
 
-        if (hasCompleted)
+        if (hasCompleted) //display endscene and reload game after win by pressing enter
         {
             Time.timeScale = 0f;
             EndScene.SetActive(true);
@@ -84,7 +84,7 @@ public class RoundManagerScript : MonoBehaviour
         StartCoroutine(Reset());
     }
 
-    IEnumerator Reset()
+    IEnumerator Reset() //reset game
     {
         yield return new WaitForSecondsRealtime(5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

@@ -23,7 +23,7 @@ public class GrenadeScript : MonoBehaviour
     void Update()
     {
         countdown -= Time.deltaTime;
-        if(countdown <= 0f && !hasBlownUp)
+        if(countdown <= 0f && !hasBlownUp) //cooldown for grenade blow up
         {
             hasBlownUp = true;
             BlowUp();
@@ -53,6 +53,6 @@ public class GrenadeScript : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        Destroy(gameObject); //destroy grenade
     }
 }

@@ -18,7 +18,7 @@ public class SpawnerScript : MonoBehaviour
 
     void Start()
     {
-        spawnLargeEnemyRound = 3;
+        spawnLargeEnemyRound = 3; //spawn large enemies at round 3
     }
 
     public void Spawn(int maxSpawn)

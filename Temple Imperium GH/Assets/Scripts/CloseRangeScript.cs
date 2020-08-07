@@ -20,6 +20,7 @@ public class CloseRangeScript : MonoBehaviour
 
     void Start()
     {
+        //set variable values
         hasDamageBoost = false;
         meleeDamage = 10;
         boostDamage = 0;
@@ -30,7 +31,7 @@ public class CloseRangeScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (hasDamageBoost)
+        if (hasDamageBoost) //boost enemy damage
         {
             boostDamage = 10;
         }
@@ -59,7 +60,7 @@ public class CloseRangeScript : MonoBehaviour
                 if (!hitPlayer)
                 {
                     hitPlayer = true;
-                    StartCoroutine(AttackPlayer());
+                    StartCoroutine(AttackPlayer()); //run coroutine to attack player
                 }
             }
         }

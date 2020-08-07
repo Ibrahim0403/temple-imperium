@@ -9,6 +9,7 @@ public class HPScript : MonoBehaviour
     public Gradient gradient;
     public Image colour;
 
+    //All code below sets and displays health bars
     public void SetHP(float hp)
     {
         slider.value = hp;

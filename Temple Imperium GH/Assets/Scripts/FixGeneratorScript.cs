@@ -76,7 +76,7 @@ public class FixGeneratorScript : MonoBehaviour
         {
             Time.timeScale = 0f;
             gameWonHUD.SetActive(true);
-            StartCoroutine(EndCutscene());
+            StartCoroutine(EndCutscene()); //begin end cutscene
         }
     }
 

@@ -21,7 +21,7 @@ public class ProjectileScript : MonoBehaviour
 
     void Update()
     {
-        if (StoneChargeScript.enemyChargeSnare)
+        if (StoneChargeScript.enemyChargeSnare) //inrease enemey rate of fire when enemy has snare charge
         {
             ROFincrease = 5;
             destroyIncrease = 1;
@@ -48,7 +48,7 @@ public class ProjectileScript : MonoBehaviour
     {
         PlayerStats player = other.GetComponent<PlayerStats>();
         if(player != null){
-            player.Attack(projectileDamage + boostDamage);
+            player.Attack(projectileDamage + boostDamage); //damage player when projectile collides with player
         }
         Destroy(this.gameObject, (3 - destroyIncrease));
     }

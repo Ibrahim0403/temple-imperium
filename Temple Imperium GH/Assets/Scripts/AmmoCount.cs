@@ -13,7 +13,7 @@ public class AmmoCount : MonoBehaviour
 
     void Start()
     {
-        textMesH = GetComponent<TextMeshProUGUI>();
+        textMesH = GetComponent<TextMeshProUGUI>(); //get text component
     }
 
     // Update is called once per frame

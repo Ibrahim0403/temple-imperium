@@ -14,6 +14,6 @@ public class FollowCameraScript : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.LookAt(transform.position + fpsCam.forward);
+        transform.LookAt(transform.position + fpsCam.forward); //enemy health bar looks at player
     }
 }

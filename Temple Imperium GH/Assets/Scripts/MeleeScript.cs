@@ -37,7 +37,7 @@ public class MeleeScript : MonoBehaviour
 
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, meleeRange)) //if ray hits something within range
         {
-            TargetScript target = hit.transform.GetComponent<TargetScript>();
+            TargetScript target = hit.transform.GetComponent<TargetScript>(); //get enemy that has been hit
 
             if (target != null)
             {

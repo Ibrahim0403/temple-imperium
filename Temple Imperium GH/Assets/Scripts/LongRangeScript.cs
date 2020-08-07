@@ -12,7 +12,7 @@ public class LongRangeScript : MonoBehaviour
 
     void Start()
     {
-        playerObject = GameObject.Find("Player");
+        playerObject = GameObject.Find("Player"); //assign player gameobject
     }
 
     void Update()
@@ -22,7 +22,7 @@ public class LongRangeScript : MonoBehaviour
         {
             if (_projectilePrefab == null)
             {
-                _projectilePrefab = Instantiate(projectilePrefab) as GameObject;
+                _projectilePrefab = Instantiate(projectilePrefab) as GameObject; //instantiate projectile to shoot at player
                 transform.LookAt(playerObject.transform);
                 _projectilePrefab.transform.position = transform.TransformPoint(Vector3.up * 1);
                 _projectilePrefab.transform.rotation = transform.rotation;

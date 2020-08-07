@@ -39,6 +39,7 @@ public class StoneChargeScript : MonoBehaviour
         //Debug.Log(Mathf.Max(Mathf.Round(poisonCharge), Mathf.Round(speedCharge), Mathf.Round(snareCharge)));
         highestCharge = Mathf.Max(Mathf.Round(poisonCharge), Mathf.Round(speedCharge), Mathf.Round(snareCharge), Mathf.Round(floatCharge));
 
+        //all code below makes all the starstone charges work
         if (poisonCharge >= maxCharge && !enemyChargeSpeed && !enemyChargeSnare && !enemyChargeFloat) //gets highest charged stone for enemy to use
         {
             enemyChargePoison = true;

@@ -28,11 +28,12 @@ public class GeneratorScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.I) && isOpen)
             {
+                PauseMenu.Paused = false;
                 CloseUI();
             }
             else if (Input.GetKeyDown(KeyCode.I))
             {
-                Cursor.lockState = CursorLockMode.None;
+                PauseMenu.Paused = true;
                 Time.timeScale = 0f;
                 GeneratorUI.SetActive(true);
                 isOpen = true;

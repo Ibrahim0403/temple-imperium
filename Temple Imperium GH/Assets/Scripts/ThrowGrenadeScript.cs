@@ -13,12 +13,12 @@ public class ThrowGrenadeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Time.time > grenadeAvailable) && Input.GetKeyDown(KeyCode.Y))
+        if ((Time.time > grenadeAvailable) && Input.GetKeyDown(KeyCode.Y)) //grenade cooldown
         {
             grenadeAvailable = Time.time + grenadeCooldown;
             GameObject grenadeGO = Instantiate(Grenade, transform.position, transform.rotation);
             Rigidbody grenadeRB = grenadeGO.GetComponent<Rigidbody>();
-            grenadeRB.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
+            grenadeRB.AddForce(transform.forward * throwForce, ForceMode.VelocityChange); //throw grenade
         }
 
         //Debug.Log(Time.time + " grenade available in: " + grenadeAvailable);

@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2.0f;
         }
 
-        //AJAZ CODE - start
+        //AJAZ CODE - START
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded && controller.height == 3f) //Allows the player to sprint if they are not in a crouching state
         {
             speed = doublespeed;

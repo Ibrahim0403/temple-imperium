@@ -67,7 +67,7 @@ public class TargetScript : MonoBehaviour
                 FixGeneratorScript.floatKills += 1;
             }
 
-            if (FixGeneratorScript.poisonKills == 15)
+            if (FixGeneratorScript.poisonKills == 15) //have to get 15 kills to drop part
             {
                 GameObject poisonCogGO = Instantiate(poisonCog, deathPOS + (Vector3.up * 1), Quaternion.identity);
                 FixGeneratorScript.poisonKills += 1;
